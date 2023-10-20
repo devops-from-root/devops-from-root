@@ -5,7 +5,7 @@
 ![Linux](https://img.shields.io/badge/-Linux-1e1e1e?style=for-the-badge&logo=linux)
 ![Windows](https://img.shields.io/badge/-Windows-1e1e1e?style=for-the-badge&logo=windows)
 
-### Навыки
+### Навыки и инструменты
 ![Git](https://img.shields.io/badge/-Git-1e1e1e?style=for-the-badge&logo=git)
 ![GitHub](https://img.shields.io/badge/-GitHub-1e1e1e?style=for-the-badge&logo=github)
 ![GitLab](https://img.shields.io/badge/-GitLab-1e1e1e?style=for-the-badge&logo=gitlab)
@@ -15,5 +15,15 @@
 ![Vagrant](https://img.shields.io/badge/-Vagrant-1e1e1e?style=for-the-badge&logo=vagrant)
 
 ![Docker](https://img.shields.io/badge/-Docker-1e1e1e?style=for-the-badge&logo=docker)
+![Portainer](https://img.shields.io/badge/-Portainer-1e1e1e?style=for-the-badge&logo=portainer)
+![Kubernetes](https://img.shields.io/badge/-Kubernetes-1e1e1e?style=for-the-badge&logo=kubernetes)
+
+### Языки
+![Bash](https://img.shields.io/badge/-BASH-1e1e1e?style=for-the-badge&logo=windowsterminal)
+![HTML](https://img.shields.io/badge/-HTML-1e1e1e?style=for-the-badge&logo=html5)
+![PHP](https://img.shields.io/badge/-PHP-1e1e1e?style=for-the-badge&logo=php)
+
+### Дополнительный опыт
+![VPN](https://img.shields.io/badge/setup-VPN-1e1e1e?style=for-the-badge&logo=openvpn)setup
 ![Portainer](https://img.shields.io/badge/-Portainer-1e1e1e?style=for-the-badge&logo=portainer)
 ![Kubernetes](https://img.shields.io/badge/-Kubernetes-1e1e1e?style=for-the-badge&logo=kubernetes)
