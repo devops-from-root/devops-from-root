@@ -2,7 +2,7 @@
 
 ## DevOps, администрирование Linux и Windows
 ![DevOps](https://img.shields.io/badge/-DevOps-1e1e1e?style=for-the-badge&logo=azuredevops)
-![Linux](https://img.shields.io/badge/-Linux-1e1e1e?style=for-the-badge&logo=linux&logoColor=wite)
+![Linux](https://img.shields.io/badge/-Linux-1e1e1e?style=for-the-badge&logo=linux&logoColor=violet)
 ![Windows](https://img.shields.io/badge/-Windows-1e1e1e?style=for-the-badge&logo=windows)
 
 ### Навыки и инструменты
