@@ -2,7 +2,7 @@
 
 ## DevOps, администрирование Linux и Windows
 ![DevOps](https://img.shields.io/badge/-DevOps-1e1e1e?style=for-the-badge&logo=azuredevops)
-![Linux](https://img.shields.io/badge/-Linux-1e1e1e?style=for-the-badge&logo=linux&logoColor=violet)
+![Linux](https://img.shields.io/badge/-Linux-1e1e1e?style=for-the-badge&logo=linux&logoColor=white)
 ![Windows](https://img.shields.io/badge/-Windows-1e1e1e?style=for-the-badge&logo=windows)
 
 ### Навыки и инструменты
@@ -25,13 +25,16 @@
 
 #### Дополнительный опыт
 ![OpenVPN](https://img.shields.io/badge/-OpenVPN-1e1e1e?style=for-the-badge&logo=openvpn)
-![WireGuard](https://img.shields.io/badge/-WireGuard-1e1e1e?style=for-the-badge&logo=wireguard)
+![WireGuard](https://img.shields.io/badge/-WireGuard-1e1e1e?style=for-the-badge&logo=wireguard&logoColor=white)
 ![Mikrotik](https://img.shields.io/badge/-Mikrotik-1e1e1e?style=for-the-badge&logo=mikrotik)
 
-![OpenVPN](https://img.shields.io/badge/-OpenVPN-1e1e1e?style=for-the-badge&logo=openvpn)
-![Wireshark](https://img.shields.io/badge/-Wireshark-1e1e1e?style=for-the-badge&logo=wireshark)
+![PostreSQL](https://img.shields.io/badge/-postgresql-1e1e1e?style=for-the-badge&logo=postgresql)
+![mariadb](https://img.shields.io/badge/-mariadb-1e1e1e?style=for-the-badge&logo=mariadb)
+![mysql](https://img.shields.io/badge/-mysql-1e1e1e?style=for-the-badge&logo=mysql)
 
 ## Информация
 [![Telegram](https://img.shields.io/badge/-Telegram-c71585?style=for-the-badge&logo=telegram&color=d8582c)](https://t.me/)
 
-[![Habr](https://img.shields.io/badge/-habr_Freelance-c71585?style=for-the-badge&logo=habr&color=09131b)](https://freelance.habr.com)
+[![Habr](https://img.shields.io/badge/habr-Freelance-c71585?style=for-the-badge&logo=habr&color=09131b)](https://freelance.habr.com)
+[![fl.ru](https://img.shields.io/badge/fl.ru-Freelance-c71585?style=for-the-badge)](https://freelance.habr.com)
+[![freelance.ru](https://img.shields.io/badge/freelance.ru-Freelance-c71585?style=for-the-badge)](https://freelance.habr.com)
