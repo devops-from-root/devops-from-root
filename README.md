@@ -12,4 +12,8 @@
 
 ![Ansible](https://img.shields.io/badge/-Ansible-1e1e1e?style=for-the-badge&logo=ansible)
 ![Terraform](https://img.shields.io/badge/-Terraform-1e1e1e?style=for-the-badge&logo=terraform)
-![Git](https://img.shields.io/badge/-Git-1e1e1e?style=for-the-badge&logo=git)
+![Vagrant](https://img.shields.io/badge/-Vagrant-1e1e1e?style=for-the-badge&logo=vagrant)
+
+![Docker](https://img.shields.io/badge/-Docker-1e1e1e?style=for-the-badge&logo=docker)
+![Portainer](https://img.shields.io/badge/-Portainer-1e1e1e?style=for-the-badge&logo=portainer)
+![Kubernetes](https://img.shields.io/badge/-Kubernetes-1e1e1e?style=for-the-badge&logo=kubernetes)
