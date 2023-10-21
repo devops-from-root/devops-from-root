@@ -36,7 +36,7 @@
 ![mysql](https://img.shields.io/badge/-mysql-1e1e1e?style=for-the-badge&logo=mysql)
 
 ### Информация
-[![Telegram](https://img.shields.io/badge/-Telegram-c71585?style=for-the-badge&logo=telegram&color=d8582c)](https://t.me/)
+[![Telegram](https://img.shields.io/badge/-Telegram-c71585?style=for-the-badge&logo=telegram&color=d8582c)](https://t.me/devops_from_root_bot)
 
 [![Habr](https://img.shields.io/badge/habr-Freelance-c71585?style=for-the-badge&logo=habr&color=09131b)](https://freelance.habr.com)
 [![fl.ru](https://img.shields.io/badge/fl.ru-Freelance-c71585?style=for-the-badge)](https://freelance.habr.com)
