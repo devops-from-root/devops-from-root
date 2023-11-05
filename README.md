@@ -9,7 +9,7 @@
 [![Git](https://img.shields.io/badge/-Git-1e1e1e?style=for-the-badge&logo=git)](git.md)
 [![GitHub](https://img.shields.io/badge/-GitHub-1e1e1e?style=for-the-badge&logo=github)](git.md)
 [![GitLab](https://img.shields.io/badge/-GitLab-1e1e1e?style=for-the-badge&logo=gitlab)](git.md)
-[![more](https://img.shields.io/badge/-подробнее-1e1e1e?style=for-the-badge&logo=mdbook&logoColor=white)](git.md)
+[![more](https://img.shields.io/badge/-подробнее-1e1e1e?logo=mdbook&logoColor=white)](git.md)
 
 ![Ansible](https://img.shields.io/badge/-Ansible-1e1e1e?style=for-the-badge&logo=ansible)
 ![Puppet](https://img.shields.io/badge/-Puppet-1e1e1e?style=for-the-badge&logo=puppet)
@@ -40,7 +40,7 @@
 [![Telegram](https://img.shields.io/badge/-Telegram-c71585?style=for-the-badge&logo=telegram&color=d8582c)](https://t.me/devops_from_root_bot)
 [![TenChat](https://img.shields.io/badge/-TenChat-c71585?style=for-the-badge&logo=livechat&color=d8582c&logoColor=white)](https://tenchat.ru/2598115)
 
-[![Habr](https://img.shields.io/badge/-habr.Freelance-c71585?style=for-the-badge&logo=habr&color=d7633b&logoColor=f5f5f5)](https://freelance.habr.com/freelancers/devops4u)
-[![fl.ru](https://img.shields.io/badge/-fl.ru-c71585?style=for-the-badge&logo=fiverr&color=d7633b&logoColor=f5f5f5)](https://www.fl.ru/users/devops4u)
-[![freelance.ru](https://img.shields.io/badge/-freelance.ru-c71585?style=for-the-badge&logo=wellfound&color=d7633b&logoColor=f5f5f5)](https://freelance.ru/devops4u)
-[![kwork.ru](https://img.shields.io/badge/-kwork.ru-c71585?style=for-the-badge&logo=upwork&color=d7633b&logoColor=f5f5f5)](https://kwork.ru/user/devops4u)
+[![Habr](https://img.shields.io/badge/-habr.Freelance-c71585?style=for-the-badge&logo=habr&color=d86c47&logoColor=f5f5f5)](https://freelance.habr.com/freelancers/devops4u)
+[![fl.ru](https://img.shields.io/badge/-fl.ru-c71585?style=for-the-badge&logo=fiverr&color=d86c47&logoColor=f5f5f5)](https://www.fl.ru/users/devops4u)
+[![freelance.ru](https://img.shields.io/badge/-freelance.ru-c71585?style=for-the-badge&logo=wellfound&color=d86c47&logoColor=f5f5f5)](https://freelance.ru/devops4u)
+[![kwork.ru](https://img.shields.io/badge/-kwork.ru-c71585?style=for-the-badge&logo=upwork&color=d86c47&logoColor=f5f5f5)](https://kwork.ru/user/devops4u)
