@@ -35,7 +35,7 @@
 ![mariadb](https://img.shields.io/badge/-mariadb-1e1e1e?style=for-the-badge&logo=mariadb)
 ![mysql](https://img.shields.io/badge/-mysql-1e1e1e?style=for-the-badge&logo=mysql)
 
-### Информация
+### Контакты
 [![Telegram](https://img.shields.io/badge/-Telegram-c71585?style=for-the-badge&logo=telegram&color=d8582c)](https://t.me/devops_from_root_bot)
 [![TenChat](https://img.shields.io/badge/-TenChat-c71585?style=for-the-badge&logo=livechat&color=d8582c&logoColor=white)](https://tenchat.ru/2598115)
 
