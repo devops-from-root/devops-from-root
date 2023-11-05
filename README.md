@@ -37,7 +37,9 @@
 
 ### Информация
 [![Telegram](https://img.shields.io/badge/-Telegram-c71585?style=for-the-badge&logo=telegram&color=d8582c)](https://t.me/devops_from_root_bot)
+[![TenChat](https://img.shields.io/badge/-TenChat-c71585?style=for-the-badge&logo=livechat&color=d8582c&logoColor=white)](https://tenchat.ru/2598115)
 
-[![Habr](https://img.shields.io/badge/habr-Freelance-c71585?style=for-the-badge&logo=habr&color=09131b)](https://freelance.habr.com)
-[![fl.ru](https://img.shields.io/badge/fl.ru-Freelance-c71585?style=for-the-badge)](https://freelance.habr.com)
-[![freelance.ru](https://img.shields.io/badge/freelance.ru-Freelance-c71585?style=for-the-badge)](https://freelance.habr.com)
+[![Habr](https://img.shields.io/badge/habr-Freelance-c71585?style=for-the-badge&logo=habr&color=09131b)](https://freelance.habr.com/freelancers/devops4u)
+[![fl.ru](https://img.shields.io/badge/fl.ru-Фриланс-c71585?style=for-the-badge&logo=wellfound&color=09131b)](https://www.fl.ru/users/devops4u)
+[![freelance.ru](https://img.shields.io/badge/freelance.ru-Freelance-c71585?style=for-the-badge&logo=wellfound&color=09131b)](https://freelance.ru/devops4u)
+[![kwork.ru](https://img.shields.io/badge/kwork.ru-КаВорк-c71585?style=for-the-badge&logo=upwork&color=09131b)](https://kwork.ru/user/devops4u)
