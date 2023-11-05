@@ -45,4 +45,4 @@
 
 - `git log`: Просмотреть историю коммитов.
 
-[![back](https://img.shields.io/badge/-назад-1e1e1e?style=for-the-badge&logo=mdbook&logoColor=white)](README.md)
+[![back](https://img.shields.io/badge/в_оглавление-646464)](README.md)
