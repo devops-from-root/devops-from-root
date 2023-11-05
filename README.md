@@ -9,7 +9,7 @@
 [![Git](https://img.shields.io/badge/-Git-1e1e1e?style=for-the-badge&logo=git)](git.md)
 [![GitHub](https://img.shields.io/badge/-GitHub-1e1e1e?style=for-the-badge&logo=github)](git.md)
 [![GitLab](https://img.shields.io/badge/-GitLab-1e1e1e?style=for-the-badge&logo=gitlab)](git.md)
-[![more](https://img.shields.io/badge/-подробнее-1e1e1e?logo=mdbook&logoColor=white)](git.md)
+[![more](https://img.shields.io/badge/подробнее-646464)](git.md)
 
 ![Ansible](https://img.shields.io/badge/-Ansible-1e1e1e?style=for-the-badge&logo=ansible)
 ![Puppet](https://img.shields.io/badge/-Puppet-1e1e1e?style=for-the-badge&logo=puppet)
