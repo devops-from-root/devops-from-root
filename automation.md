@@ -121,4 +121,92 @@ ansible-inventory -i inventory.ini --list
 ansible <группа_серверов> -m setup
 ```
 
+### Шпаргалка по Puppet
+
+1. **Применение текущей конфигурации Puppet**
+
+```
+puppet apply /etc/puppet/manifests/site.pp
+```
+
+1. **Проверка состояния системы с использованием фактов (facts)**
+
+```
+puppet facts
+```
+
+1. **Проверка ресурсов (resources) на хосте**
+
+```
+puppet resource <тип_ресурса> <имя_ресурса>
+```
+
+1. **Запуск Puppet агента (демона) в фоновом режиме**
+
+```
+puppet agent --daemonize
+```
+
+1. **Остановка Puppet агента (демона)**
+
+```
+puppet agent --disable
+```
+
+1. **Применение конфигурации через сервер (при использовании Puppet Master)**
+
+```
+puppet agent -t
+```
+
+1. **Сбор и отправка фактов (facts) на Puppet Master**
+
+```
+puppet facts upload
+```
+
+1. **Проверка синтаксиса конфигурационных файлов**
+
+```
+puppet parser validate <файл.pp>
+```
+
+1. **Получение информации о модулях Puppet**
+
+```
+puppet module list
+```
+
+1. **Установка модуля Puppet**
+
+```
+puppet module install <автор/модуль>
+```
+
+1. **Просмотр списка классов и ресурсов в манифестах**
+
+```
+puppet describe <класс_или_ресурс>
+```
+
+1. **Создание нового модуля Puppet**
+
+```
+puppet module generate <автор-модуля>-<название-модуля>
+```
+
+1. **Проверка, какие изменения будут внесены без применения конфигурации**
+
+```
+puppet agent --noop --test
+```
+
+1. **Запуск Puppet агента с использованием другого окружения**
+
+```
+puppet agent --environment <имя_окружения>
+```
+
+
+
 [![back](https://img.shields.io/badge/в_оглавление-646464)](README.md)
