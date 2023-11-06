@@ -19,8 +19,8 @@
 [![more](https://img.shields.io/badge/читать_подробнее_про_автоматизацию-646464)](automation.md)
 
 
-[![Terraform](https://img.shields.io/badge/-Terraform-1e1e1e?style=for-the-badge&logo=terraform)](HashiCorp.md)
-[![Vagrant](https://img.shields.io/badge/-Vagrant-1e1e1e?style=for-the-badge&logo=vagrant)](HashiCorp.md)
+[![Terraform](https://img.shields.io/badge/-Terraform-1e1e1e?style=for-the-badge&logo=terraform)](HashiCorp.md#terraform)
+[![Vagrant](https://img.shields.io/badge/-Vagrant-1e1e1e?style=for-the-badge&logo=vagrant)](HashiCorp.md#vagrant)
 
 [![more](https://img.shields.io/badge/читать_подробнее_про_HashiCorp-646464)](HashiCorp.md)
 
