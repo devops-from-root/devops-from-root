@@ -26,59 +26,79 @@ Ansible и Puppet - два популярных инструмента для а
 
 1. **Установка Ansible**
 
-`sudo apt-get install ansible`
+```
+sudo apt-get install ansible
+```
 
 2. **Проверка доступности хостов**
 
-`ansible all -m ping`
+```
+ansible all -m ping
+```
 
 3. **Запуск ad-hoc команды на хостах**
 
-`ansible <группа_серверов> -a "<команда>"`
+```
+ansible <группа_серверов> -a "<команда>"
+```
 
 4. **Выполнить команду на удаленном сервере**
 
-`ansible <группа_серверов> -m <модуль> -a "<команда>"`
+```
+ansible <группа_серверов> -m <модуль> -a "<команда>"
+```
 
 5. **Создание плейбука** yaml
 
-`- name: Пример плейбука`
-
-`  hosts: <группа_серверов>`
-
-`  tasks:`
-
-`    - name: Задача 1`
-
-`      <модуль>: <аргументы>`
+```
+- name: Пример плейбука
+  hosts: <группа_серверов>
+  tasks:
+    - name: Задача 1
+      <модуль>: <аргументы>
+```
 
 6. **Запустить плейбук**
 
-`ansible-playbook playbook.yml`
+```
+ansible-playbook playbook.yml
+```
 
 7. **Применение плейбука на несколько хостов**
 
-`ansible-playbook playbook.yml -l <группа_серверов>`
+```
+ansible-playbook playbook.yml -l <группа_серверов>
+```
 
 8. **Проверка синтаксиса плейбука**
 
-`ansible-playbook --syntax-check playbook.yml`
+```
+ansible-playbook --syntax-check playbook.yml
+```
 
 9. **Проверка, какие задачи будут выполнены без применения плейбука**
 
-`ansible-playbook playbook.yml --list-tasks`
+```
+ansible-playbook playbook.yml --list-tasks
+```
 
 10. **Определение переменной в плейбуке**
 
-`my_var: значение`
+```
+my_var: значение
+```
 
 11. **Использование переменной в плейбуке** yaml
 
-`{{ my_var }}`
+```
+{{ my_var }}
+```
 
 12. **Использование переменных в командах**
 
-```ansible <группа_серверов> -a "echo {{ my_var }}"```
+```
+ansible <группа_серверов> -a "echo {{ my_var }}"
+```
 
 13. **Копирование файла с использованием шаблона** yaml
 
@@ -91,10 +111,14 @@ Ansible и Puppet - два популярных инструмента для а
 
 14. **Получение информации об инвентаре**
 
-`ansible-inventory -i inventory.ini --list`
+```
+ansible-inventory -i inventory.ini --list
+```
 
 15. **Установка фактов (гathering facts) на хостах**
 
-`ansible <группа_серверов> -m setup`
+```
+ansible <группа_серверов> -m setup
+```
 
 [![back](https://img.shields.io/badge/в_оглавление-646464)](README.md)
