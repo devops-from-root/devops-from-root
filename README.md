@@ -15,8 +15,9 @@
 [![Puppet](https://img.shields.io/badge/-Puppet-1e1e1e?style=for-the-badge&logo=puppet)](automation.md)
 [![more](https://img.shields.io/badge/читать_подробнее_про_автоматизацию-646464)](automation.md)
 
-![Terraform](https://img.shields.io/badge/-Terraform-1e1e1e?style=for-the-badge&logo=terraform)
-![Vagrant](https://img.shields.io/badge/-Vagrant-1e1e1e?style=for-the-badge&logo=vagrant)
+[![Terraform](https://img.shields.io/badge/-Terraform-1e1e1e?style=for-the-badge&logo=terraform)](HashiCorp.md)
+[![Vagrant](https://img.shields.io/badge/-Vagrant-1e1e1e?style=for-the-badge&logo=vagrant)](HashiCorp.md)
+[![more](https://img.shields.io/badge/читать_подробнее_про_HashiCorp-646464)](HashiCorp.md)
 
 ![Docker](https://img.shields.io/badge/-Docker-1e1e1e?style=for-the-badge&logo=docker)
 ![Portainer](https://img.shields.io/badge/-Portainer-1e1e1e?style=for-the-badge&logo=portainer)
