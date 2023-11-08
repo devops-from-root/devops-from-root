@@ -68,7 +68,7 @@ origin  https://github.com/devops-from-root/devops-from-root.git (push)
 +[![back](https://img.shields.io/badge/назад-646464)](demogit.md)
 +[![home](https://img.shields.io/badge/оглавление-646464)](README.md)
 ```
-Сообщим гиту что мы разрешили конфликт `git add git_demo.md`
+Сообщим гиту что мы разрешили конфликт `git add git_demo.md`. Проверим ещё раз статус `git status`.
 
 ## Отправка
 
