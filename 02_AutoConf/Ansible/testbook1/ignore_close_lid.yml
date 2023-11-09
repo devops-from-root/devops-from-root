@@ -1,0 +1,17 @@
+---
+- name: Отключение засыпания ноутбука при закрытии крышки
+  hosts: testbook1
+  become: yes
+  become_user: root
+  tasks:
+    - name: Add 'HandleLidSwitch=ignore' to logind.conf
+      lineinfile:
+        dest: /etc/systemd/logind.conf
+        line: 'HandleLidSwitch=ignore'
+        create: yes
+        state: present
+      when: ansible_distribution == 'Ubuntu'
+    - name: Restart systemd-logind
+      systemd:
+        name: systemd-logind
+        state: restarted
