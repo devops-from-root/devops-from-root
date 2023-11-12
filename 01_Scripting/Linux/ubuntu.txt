@@ -1,0 +1,21 @@
+################ Система и настройки ################
+dmesg | egrep -i "(error|fail|warning)" # ошибки
+
+################ Группы, пользователи, пароли ################
+cat /etc/group #все группы
+grep bash /etc/passwd #пользователи кто может залогониться
+
+################ Диск и файлы ################
+В корне создать файл touch forcefsck и будет проверка при перезагрузке
+shutdown -rF now
+
+swapoff -a #откл своп
+
+lsattr -Ra filename
+chattr -i filename
+ 
+netstat -tulnp #открытые порты
+
+iptables -A INPUT -p tcp --dport 8044 -j ACCEPT ## разрешить порт
+iptables -L -n -v ## просмотр правил
+

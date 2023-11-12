@@ -1,0 +1,106 @@
+journalctl -xe
+################################################################
+## ssh enable root
+nano /etc/ssh/sshd_config
+PermitRootLogin yes
+/etc/init.d/ssh restart
+
+deluser --remove-all-files user1
+
+nano /etc/network/interfaces
+# The primary network interface
+auto ens18
+iface ens18 inet static
+        address 192.168.10.20
+        netmask 255.255.255.0
+        network 192.168.10.0
+        broadcast 192.168.10.255
+        gateway 192.168.10.1
+
+systemctl restart networking
+
+nano /etc/default/grub
+GRUB_CMDLINE_LINUX_DEFAULT="pcie_aspm=off quiet"
+update-grub
+
+########################################################
+nano /etc/apt/sources.list 
+
+deb http://deb.debian.org/debian/ bookworm main contrib non-free-firmware non-free
+deb http://security.debian.org/debian-security bookworm-security main contrib non-free-firmware non-free
+deb http://deb.debian.org/debian/ bookworm-updates main contrib non-free-firmware non-free
+
+apt update -qq && apt dist-upgrade
+
+apt install ntp ssl-cert mc curl wget apt-transport-https dirmngr htop net-tools sudo qemu-guest-agent 
+apt install openjdk-11-jdk-headless
+
+apt-get install linux-image-$(uname -r|sed 's,[^-]*-[^-]*-,,') linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') broadcom-sta-dkms ### драйвера wifi
+modprobe -r b44 b43 b43legacy ssb brcmsmac bcma && modprobe wl
+
+mkdir /lib/firmware/brcm
+cd /lib/firmware/brcm
+wget --no-check-certificate --content-disposition https://github.com/winterheart/broadcom-bt-firmware/raw/master/brcm/BCM43142A0-0a5c-21d7.hcd
+sudo modprobe -r btusb && sudo modprobe btusb
+
+dmesg | grep -i blu
+
+################################################################
+apt-get install libmono-system-xml-linq4.0-cil libmono-system-data-datasetextensions4.0-cil libmono-system-runtime-serialization4.0-cil mono-mcs
+cd /usr/lib/keepass2/Plugins/
+wget --no-check-certificate --content-disposition https://raw.github.com/pfn/keepasshttp/master/KeePassHttp.plgx
+
+apt install gparted partitionmanager krusader mc sirikali encfs 
+
+################################################################
+## swap
+apt-get -y install dphys-swapfile
+echo 'CONF_SWAPFILE=/var/mydata/swap' | tee -a /etc/dphys-swapfile
+echo 'CONF_MAXSWAP=2048' | tee -a /etc/dphys-swapfile
+dphys-swapfile setup
+
+fallocate -l 2G /var/mydata/swapfile && chmod 600 /var/mydata/swapfile
+ls -lh /var/mydata/swapfile #-rw------- 1 root root 256M /swapfile
+mkswap /var/mydata/swapfile && swapon /var/mydata/swapfile
+swapon --show && free -h
+cp /etc/fstab /etc/fstab.bak
+echo '/var/mydata/swapfile none swap sw 0 0' | tee -a /etc/fstab
+
+cat /proc/sys/vm/swappiness && cat /proc/sys/vm/vfs_cache_pressure  #60 100
+sysctl vm.swappiness=10 && sysctl vm.vfs_cache_pressure=50
+echo 'vm.swappiness=10' | tee -a /etc/sysctl.conf
+echo 'vm.vfs_cache_pressure=50' | tee -a /etc/sysctl.conf
+
+################################################################
+## disk
+mkfs.ext4 /dev/device
+blkid ### uid
+mount /path_in_fstab
+mke2fs -t ext4 -L video -m 0 -O ^has_journal /dev/vdb1
+UUID=a0ad5c9b-2fa2-4f28-8125-d802c50fd7ba	/video	ext4	defaults	0	1
+LABEL=video									/video	ext4	defaults	0	0
+nano /etc/fstab
+mkdir /video && mount /video
+chown -R www-data:www-data /video
+
+
+df -hT	## Свободное место
+
+touch /forcefsck создать с помощью touch пустой файл в корне диска /forcefsck, который служит сигналом для fsck, что нужно проверить диски
+
+################################################################
+## nano .bashrc
+export HISTTIMEFORMAT="%h %d %H:%M:%S "
+export HISTSIZE=50000
+shopt -s histappend
+PROMPT_COMMAND='history -a'
+
+################################################################
+## Generate snakeoil SSL certificates
+apt install ssl-cert
+make-ssl-cert generate-default-snakeoil
+usermod --append --groups ssl-cert user1
+ls -l /etc/ssl/certs/ssl-cert-snakeoil.pem /etc/ssl/private/ssl-cert-snakeoil.key
+
+php -v
+update-alternatives --config php

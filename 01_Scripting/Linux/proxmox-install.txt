@@ -1,0 +1,235 @@
+pveperf - тест производительности
+
+/var/lib/vz/template/iso
+
+откл сон
+/etc/systemd/logind.conf HandleLidSwitch=ignore
+systemctl restart systemd-logind
+
+deb http://deb.debian.org/debian/ stable main contrib non-free
+deb-src http://deb.debian.org/debian/ stable main contrib non-free
+deb http://deb.debian.org/debian/ stable-updates main contrib non-free
+deb-src http://deb.debian.org/debian/ stable-updates main contrib non-free
+deb http://deb.debian.org/debian-security stable/updates main
+deb-src http://deb.debian.org/debian-security stable/updates main
+deb http://ftp.debian.org/debian stretch-backports main
+deb-src http://ftp.debian.org/debian stretch-backports main
+deb http://download.proxmox.com/debian/pve stretch pve-no-subscription
+deb http://download.proxmox.com/debian/pve buster pve-no-subscription
+
+apt update && apt dist-upgrade -y
+
+################################################################
+## ssh enable root
+nano /etc/ssh/sshd_config
+PermitRootLogin yes
+systemctl restart ssh
+/etc/init.d/ssh restart
+
+############################################
+vnc:
+apt -y install xfce4 xfce4-goodies gnome-icon-theme tightvncserver
+vncserver
+vncserver -kill :1
+nano ~/.vnc/xstartup
+#!/bin/sh
+unset SESSION_MANAGER
+unset DBUS_SESSION_BUS_ADDRESS
+exec startxfce4 
+
+nano /usr/local/bin/vnc.server
+#!/bin/bash
+PATH="$PATH:/usr/bin/"
+DISPLAY="1"
+DEPTH="16"
+GEOMETRY="1200x700"
+OPTIONS="-depth ${DEPTH} -geometry ${GEOMETRY} :${DISPLAY}"
+case "$1" in
+start)
+/usr/bin/vncserver ${OPTIONS}
+;;
+stop)
+/usr/bin/vncserver -kill :${DISPLAY}
+;;
+restart)
+$0 stop
+$0 start
+;;
+esac
+exit 0
+
+chmod +x /usr/local/bin/vnc.server
+vnc.server start 
+vnc.server stop
+vnc.server restart
+
+nano /lib/systemd/system/vncserver.service
+[Unit]
+Description=Server Vnc
+[Service]
+Type=forking
+ExecStart=/usr/local/bin/vnc.server start
+ExecStop=/usr/local/bin/vnc.server stop
+ExecReload=/usr/local/bin/vnc.server restart
+User=root
+[Install]
+WantedBy=multi-user.target
+
+systemctl enable vncserver.service
+systemctl -l status vncserver.service
+systemctl daemon-reload
+
+systemctl set-default multi-user.target откл.х
+systemctl set-default graphical.target вкл х
+
+######################################################
+nano /etc/default/grub
+GRUB_CMDLINE_LINUX_DEFAULT="pcie_aspm=off quiet"
+update-grub
+
+######################################################
+
+Если не правильно было время удалить кэш ррд: /var/lib/rrdcached/db 
+
+qm rescan --vmid 103		### пересканировать конфиг вм
+
+
+######################################################
+диски:
+apt install parted -y
+(parted) mklabel gpt
+(parted) print
+
+
+dd if=/dev/zero of=/dev/sdX bs=1M - whipe 
+dd if=/dev/zero of=/hdd.zfs bs=200M count=1
+fdisk -l -u - инфо о партициях
+ls -l  /dev/disk/by-id
+ls -l /dev/mapper
+df - примонтировано
+lsblk -o NAME,SIZE,FSTYPE,TYPE,MOUNTPOINT устройства, которые были использованы
+
+монтирование диска ext4 как папки
+mkdir /mnt/backups
+mount /dev/sdb1 /mnt/backups
+lsblk -o +FSTYPE,UUID /dev/sda1
+echo 'UUID=dc83aa0e-9544-4927-9e48-320c2caf5b5a /mnt/backups    ext4    defaults 0   2' >> /etc/fstab
+pvesm add dir backups --path /mnt/backups --content backup
+
+mkfile 100m disk1 disk2 disk3 disk5 - 5 пустых файлов
+mdadm --create --verbose /dev/md0 --level=0 --raid-devices=2 /dev/sda /dev/sdb
+cat /proc/mdstat
+
+######################################################
+:lvm2
+lvs -o+chunksize		### вывод размеров метадаты, даты и chunk
+lvrename VG LV LV_new		### переименовать лв
+lvcreate --type thin-pool -l100%FREE -Zn -c256k lvm-nvme0n1 -n thin-nvme0n1
+vgcreate vg_sda+sdc_stripe /dev/sda /dev/sdc
+lvcreate --type thin-pool -l100%FREE -Zn -c256k -i2 -I64 vg_sda+sdc_stripe -n thin-sda+sdc_stripe 
+lvdisplay
+pvdisplay
+vgdisplay
+vgdisplay -v
+pvscan
+vgcreate lvm-sdb5 /dev/sdb5
+
+dd if=/dev/zero of=/dev/sda bs=1k count=100
+dd if=/dev/zero of=/dev/sdc bs=1k count=100
+blockdev --rereadpt /dev/sda
+blockdev --rereadpt /dev/sdc
+pvcreate /dev/sda
+pvcreate /dev/sdc
+vgcreate vg_stripe /dev/sda /dev/sdc
+lvcreate --type thin-pool -l100%FREE -Zn -c256k -i2 -I64 vg_stripe -n backup_stripe 
+mkfs.ext4 /dev/backups/thin-backup
+echo '/dev/mapper/backups-thin--backups /mnt/backups ext4 x-systemd.device-timeout=120s 0 0' >> /etc/fstab
+
+lvrmeove
+
+######################################################
+:zfs		https://pve.proxmox.com/wiki/ZFS_on_Linux https://pve.proxmox.com/wiki/ZFS:_Tips_and_Tricks
+zpool import	доступные хранилища
+zpool list
+zpool status
+zpool iostat -v какие пулы из каких дисков 
+zpool create -f -o ashift=12 <pool> <device>
+zpool create -f -o ashift=13 zvol3 /dev/disk/by-id/ata-CT500MX500SSD4N_1911E1F10893-part5
+zpool create <pool> raidz /dev/sda4 /dev/sdb1 /dev/sdc1
+:сжатие
+zfs set compression=lz4 (on, off) <pool>
+zfs get compression <pool>
+zfs get compression,sync,primarycache zvol3
+:монтирование
+zfs set mountpoint=<path> <pool>
+
+zpool add -f rpool log /dev/sdb1 cache /dev/sdb2
+zfs create zvol1/data
+zfs set reservation=200M sd.zfs/logs
+zfs set quota=200M hdd.zfs/logs
+zfs set compression=on sd.zfs/iso
+zfs list
+zfs destroy zvol1/data
+zfs set mountpoint=/var/lib/vz/template/iso sd.zfs/iso
+df -h свободное место
+ zfs get mountpoint
+  zfs get mounted hdd.zfs/log
+ zfs mount -a
+для бэкапов:
+ zfs set sync=disabled zvol3
+ zfs set compression=lz4 zvol1
+ zfs set primarycache=metadata zvol3
+ zfs set dedup=on raid1-pool
+ zpool trim myssdpool
+ zpool set autotrim=on myssdpool
+ 
+cache:
+echo 'options zfs zfs_arc_max=2147483648' > /etc/modprobe.d/zfs.conf ограничить озу под arc
+echo 'options zfs zfs_arc_max=536870912' > /etc/modprobe.d/zfs.conf
+
+smartctl -a /dev/nvme0n1
+zpool scrub zvol1
+
+######################################################
+swap:
+zfs create -V 64G -b $(getconf PAGESIZE) -o compression=zle -o logbias=throughput -o sync=always -o primarycache=metadata -o secondarycache=none -o com.sun:auto-snapshot=false -o checksum=off tpool/swap
+mkswap -f /dev/zvol/tpool/swap
+echo /dev/zvol/tpool/swap none swap defaults 0 0 >> /etc/fstab
+swapon -av применить
+swapon -s вывод подключенных
+swapon -a
+
+nano /etc/sysctl.conf
+vm.swappiness = 10
+vm.vfs_cache_pressure = 50
+
+
+температура:
+apt install lm-sensors nvme-cli hddtemp
+sensors-detect
+modprobe coretemp
+sensors
+nvme smart-log /dev/nvme0n1 | grep '^temperature'
+
+st:
+#!/bin/sh
+
+while :
+do
+clear
+sensors
+hddtemp /dev/sda
+hddtemp /dev/sdb
+hddtemp /dev/sdc
+hddtemp /dev/sdd
+hddtemp /dev/sde
+#hddtemp /dev/sdf
+echo ''
+echo '/dev/nvme0n1'
+nvme smart-log /dev/nvme0n1 | grep '^temperature'
+sleep 5s
+done
+
+################ память ##################
+apt install htop
+
