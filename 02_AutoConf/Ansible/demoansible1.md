@@ -39,6 +39,7 @@ Vagrant.configure(2) do |config|
     virtualbox.name = "ch03"
   end
 end
+
 ```
 
 В файл **ignore_close_lid.yml**:
@@ -50,6 +51,7 @@ end
   become_user: root
   tasks:
     - name: Добавляем 'HandleLidSwitch=ignore' в logind.conf
+
       lineinfile:
         dest: /etc/systemd/logind.conf
         line: 'HandleLidSwitch=ignore'
@@ -57,6 +59,7 @@ end
         state: present
       when: ansible_distribution == 'Ubuntu'
     - name: Перезапускаем systemd-logind
+
       systemd:
         name: systemd-logind
         state: restarted
@@ -73,4 +76,5 @@ end
 
 - Условие when: ansible_distribution == 'Ubuntu' позволяет выполнить первую задачу только на системах с операционной системой Ubuntu.
 
-Чтобы выполнить этот плейбук, используйте команду: `ansible-playbook ignore_close_lid.yml -u ansible -e ansible_ssh_pass=ansible"`.
+Чтобы выполнить этот плейбук, используйте команду: `ansible-playbook -i inventory.ini ignore_close_lid.yml -u ansible -e "ansible_ssh_pass=ansible"`.
+
