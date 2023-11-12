@@ -23,32 +23,46 @@
 
 ## Создаём первый плейбук
 
-Создаём папку под проект **testbook1**. В ней размещаем файл inventory.ini с таким содержимым:
+Создаём папку под проект **testbook1**. В ней размещаем файл Vagrant с таким содержимым:
 ```
-[testbook1]
-192.168.10.200
+Vagrant.configure(2) do |config|
+  config.vm.box = "ubuntu/focal64"
+  config.vm.hostname = "testserver"
+  config.vm.network "forwarded_port", id: 'ssh', guest: 22, host: 2202, host_ip: "127.0.0.1", auto_correct: false
+  config.vm.network "forwarded_port", id: 'http', guest: 80, host: 8080, host_ip: "127.0.0.1"
+  config.vm.network "forwarded_port", id: 'https', guest: 443, host: 8443, host_ip: "127.0.0.1"
+  # запретить обновление дополнений гостевой системы
+  if Vagrant.has_plugin?("vagrant-vbguest")
+    config.vbguest.auto_update = false
+  end
+  config.vm.provider "virtualbox" do |virtualbox|
+    virtualbox.name = "ch03"
+  end
+end
+
 ```
 
 В файл **ignore_close_lid.yml**:
 ```
 ---
-- name: Отключение засыпания ноутбука при закрытии крышки
-  hosts: testbook1
+- name: Отключение засыпания ноутбука при закрытии крышки 
+  hosts: 192.168.10.200
   become: yes
   become_user: root
   tasks:
-    - name: Add 'HandleLidSwitch=ignore' to logind.conf
+    - name: Добавляем 'HandleLidSwitch=ignore' в logind.conf
+
       lineinfile:
         dest: /etc/systemd/logind.conf
         line: 'HandleLidSwitch=ignore'
         create: yes
         state: present
       when: ansible_distribution == 'Ubuntu'
-    - name: Restart systemd-logind
+    - name: Перезапускаем systemd-logind
+
       systemd:
         name: systemd-logind
         state: restarted
-
 
 ```
 
